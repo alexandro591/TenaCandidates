@@ -95,5 +95,12 @@ export class CandidatesComponent implements OnInit {
     this.selected = {};
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const that = this;
+    _window().FB.getLoginStatus(async function (response: any) {
+      if (response.authResponse.userID) {
+        that.userID = response.authResponse.userID;
+      }
+    });
+  }
 }
