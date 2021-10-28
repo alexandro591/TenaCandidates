@@ -1,0 +1,47 @@
+<div class="voteModal" *ngIf="selected.name">
+  <span> Vota por {{ selected.name }} </span>
+  <button mat-raised-button color="primary">Votar con Facebook</button>
+  <button mat-raised-button color="warn" (click)="close()">Cancelar</button>
+</div>
+
+<mat-card class="candidatesCard">
+  <div class="groupTitle">
+    <span>Reina del Tena 👑️</span>
+  </div>
+  <div class="candidatesContainer">
+    <div *ngFor="let candidate of candidates.reina">
+      <div class="candidate">
+        <div class="candidatePicture">
+          <img src="/assets/candidates/{{ candidate.picture }}.jpeg" alt="" />
+        </div>
+        <div class="candidateButton" (click)="selectCandidate(candidate)">
+          <span>
+            {{ candidate.name }}
+          </span>
+          <button mat-stroked-button color="accent">Votar ❤️</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<mat-card class="candidatesCard">
+  <div class="groupTitle">
+    <span>Huaysa-Ishpingu Huarmi 👑️</span>
+  </div>
+  <div class="candidatesContainer">
+    <div *ngFor="let candidate of candidates.guayusa">
+      <div class="candidate">
+        <div class="candidatePicture">
+          <img src="/assets/candidates/{{ candidate.picture }}.jpeg" alt="" />
+        </div>
+        <div class="candidateButton" (click)="selectCandidate(candidate)">
+          <span>
+            {{ candidate.name }}
+          </span>
+          <button mat-stroked-button color="accent">Votar ❤️</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>

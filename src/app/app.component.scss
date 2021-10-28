@@ -1,0 +1,76 @@
+.title {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 100px;
+  h1 {
+    max-width: 400px;
+    text-align: center;
+    line-height: 50px;
+    .logo {
+      max-width: 0;
+      max-height: 0;
+      img {
+        position: relative;
+        left: -10px;
+        transform: rotate(-15deg);
+        width: 80px;
+      }
+    }
+  }
+  span {
+    text-align: center;
+    font-size: 40px;
+    font-family: "Dancing Script", cursive;
+  }
+}
+
+.main {
+  padding: 25px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 70px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  img {
+    margin-right: 10px;
+    width: 150px;
+    animation: animateHeart 5s infinite;
+  }
+  z-index: 99999;
+}
+
+@media only screen and (max-width: 800px) {
+  .logo {
+    display: none;
+  }
+}
+
+@keyframes animateHeart {
+  // scale down and scale up faster in irregular intervals to get the throbbing effect
+  0% {
+    transform: scale(0.8);
+  }
+  25% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}

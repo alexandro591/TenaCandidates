@@ -1,0 +1,87 @@
+.voteModal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 231, 253, 0.872);
+  z-index: 99999;
+  span {
+    font-size: 20px;
+  }
+  * {
+    margin: 10px;
+  }
+}
+
+.candidatesCard {
+  background: rgba(240, 193, 255, 0.365);
+  margin: 10px 0 50px 0;
+  .groupTitle {
+    font-size: 2em;
+    font-family: "Dancing Script", cursive;
+    padding-bottom: 30px;
+  }
+}
+.candidatesContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-family: sans-serif;
+  .candidate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .candidatePicture {
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        border-radius: 10px;
+        width: 100%;
+        max-width: 300px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.146);
+      }
+    }
+    span {
+      text-align: center;
+      font-size: 20px;
+      margin: 20px;
+      max-width: 300px;
+    }
+    .candidateButton {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.441) !important;
+      border-radius: 0 0 10px 10px;
+      padding: 10px 20px 10px 20px;
+      max-width: 260px;
+      height: 130px;
+      margin: -20px 0 20px 0;
+    }
+    button {
+      margin: 0 0 50px 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .candidatesContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .candidatesContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .candidateButton {
+    max-width: 250px !important;
+  }
+}
