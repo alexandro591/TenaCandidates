@@ -106,9 +106,11 @@ export class CandidatesComponent implements OnInit {
           .then((res: any) => {
             that.prevVote.reina = res.data;
           });
-        axios.get(`${that.databaseUrl}/guayusa.json`).then((res: any) => {
-          that.prevVote.guayusa = res.data;
-        });
+        axios
+          .get(`${that.databaseUrl}/guayusa/${that.userID}.json`)
+          .then((res: any) => {
+            that.prevVote.guayusa = res.data;
+          });
       }
     });
   }
