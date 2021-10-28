@@ -86,6 +86,16 @@ export class CandidatesComponent implements OnInit {
         await axios.patch(`${that.databaseUrl}/${that.selected.type}.json`, {
           [that.userID]: that.selected,
         });
+        axios
+          .get(`${that.databaseUrl}/reina/${that.userID}.json`)
+          .then((res: any) => {
+            that.prevVote.reina = res.data;
+          });
+        axios
+          .get(`${that.databaseUrl}/guayusa/${that.userID}.json`)
+          .then((res: any) => {
+            that.prevVote.guayusa = res.data;
+          });
         that.selected = {};
         _window().alert('Gracias por ayudarnos con tu valiosa respuesta. 🙏️');
       }
