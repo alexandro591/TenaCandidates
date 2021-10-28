@@ -57,6 +57,7 @@ export class CandidatesComponent implements OnInit {
   candidates = CANDIDATES;
   databaseUrl = 'https://tenacandidates-default-rtdb.firebaseio.com';
   selected: any = {};
+  userID: any;
   constructor() {}
 
   selectCandidate(type: string, selected: any) {
@@ -67,15 +68,25 @@ export class CandidatesComponent implements OnInit {
   async vote() {
     const that = this;
     try {
-      await _window().FB.login();
+      if (!that.userID) {
+        await _window().FB.login();
+        const interval = _window().setInterval(async () => {
+          await _window().FB.getLoginStatus(async function (response: any) {
+            if (response.authResponse.userID) {
+              that.userID = response.authResponse.userID;
+              _window().clearInterval(interval);
+            }
+          });
+        }, 1000);
+      }
     } catch (err) {}
     try {
-      await _window().FB.getLoginStatus(async function (response: any) {
-        if (response.authResponse.userID)
-          await axios.patch(`that.databaseUrl/${that.selected.type}.json`, {
-            [response.authResponse.userID]: that.selected,
-          });
-      });
+      if (that.userID) {
+        await axios.patch(`that.databaseUrl/${that.selected.type}.json`, {
+          [that.userID]: that.selected,
+        });
+        _window().alert('Gracias por ayudarnos con tu valiosa respuesta. 🙏️');
+      }
     } catch (err) {}
   }
 
