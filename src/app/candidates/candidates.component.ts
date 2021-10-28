@@ -81,10 +81,11 @@ export class CandidatesComponent implements OnInit {
       }
     } catch (err) {}
     try {
-      if (that.userID) {
+      if (that.userID && that.selected) {
         await axios.patch(`${that.databaseUrl}/${that.selected.type}.json`, {
           [that.userID]: that.selected,
         });
+        that.selected = {};
         _window().alert('Gracias por ayudarnos con tu valiosa respuesta. 🙏️');
       }
     } catch (err) {}
