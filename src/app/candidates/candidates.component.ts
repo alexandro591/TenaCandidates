@@ -66,7 +66,7 @@ export class CandidatesComponent implements OnInit {
 
   async vote() {
     const that = this;
-    _window().FB.login();
+    await _window().FB.login();
     await _window().FB.getLoginStatus(function (response: any) {
       axios.patch(`that.databaseUrl/${that.selected.type}.json`, {
         [response.authResponse.userID]: that.selected,
