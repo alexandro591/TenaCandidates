@@ -48,11 +48,15 @@ const CANDIDATES = {
   styleUrls: ['./candidates.component.scss'],
 })
 export class CandidatesComponent implements OnInit {
+  window: any = window;
   candidates = CANDIDATES;
   selected: any = {};
   constructor() {}
 
   selectCandidate(selected: any): any {
+    this.window.FB.getLoginStatus(function (response: any) {
+      console.log(response);
+    });
     this.selected = selected;
     console.log(this.selected);
   }
