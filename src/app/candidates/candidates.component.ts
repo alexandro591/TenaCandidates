@@ -58,7 +58,7 @@ export class CandidatesComponent implements OnInit {
   databaseUrl = 'https://tenacandidates-default-rtdb.firebaseio.com';
   selected: any = {};
   userID: any;
-  prevVote: any;
+  prevVote: any = {};
   constructor() {}
 
   selectCandidate(type: string, selected: any) {
