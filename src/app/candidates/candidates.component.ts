@@ -22,7 +22,7 @@ const CANDIDATES = {
   reina: [
     {
       id: 4,
-      name: 'Carol Jasmin Bastidas Guevara',
+      name: 'Karol Jasmin Bastidas Guevara',
       picture: 'reina1',
     },
     {

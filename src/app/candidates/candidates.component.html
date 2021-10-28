@@ -1,7 +1,7 @@
 <div class="voteModal" *ngIf="selected.name">
   <span> Vota por {{ selected.name }} </span>
   <button mat-raised-button color="primary" (click)="vote()">
-    <span *ngIf="!userID"> Iniciar sessión con Facebook </span>
+    <span *ngIf="!userID"> Iniciar sesión con Facebook </span>
     <span *ngIf="userID"> Votar </span>
   </button>
   <button mat-raised-button color="warn" (click)="close()">Cancelar</button>
