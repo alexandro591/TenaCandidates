@@ -66,12 +66,17 @@ export class CandidatesComponent implements OnInit {
 
   async vote() {
     const that = this;
-    await _window().FB.login();
-    await _window().FB.getLoginStatus(function (response: any) {
-      axios.patch(`that.databaseUrl/${that.selected.type}.json`, {
-        [response.authResponse.userID]: that.selected,
+    try {
+      await _window().FB.login();
+    } catch (err) {}
+    try {
+      await _window().FB.getLoginStatus(async function (response: any) {
+        if (response.authResponse.userID)
+          await axios.patch(`that.databaseUrl/${that.selected.type}.json`, {
+            [response.authResponse.userID]: that.selected,
+          });
       });
-    });
+    } catch (err) {}
   }
 
   close() {
