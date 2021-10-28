@@ -55,7 +55,7 @@ function _window(): any {
 })
 export class CandidatesComponent implements OnInit {
   candidates = CANDIDATES;
-  databaseUrl = 'https://tenacandidates-default-rtdb.firebaseio.com';
+  databaseUrl = 'https://reinadetena-default-rtdb.firebaseio.com/';
   selected: any = {};
   userID: any;
   prevVote: any = {};
@@ -96,16 +96,7 @@ export class CandidatesComponent implements OnInit {
         await axios.patch(`${that.databaseUrl}/${that.selected.type}.json`, {
           [that.userID]: that.selected,
         });
-        axios
-          .get(`${that.databaseUrl}/reina/${that.userID}.json`)
-          .then((res: any) => {
-            that.prevVote.reina = res.data;
-          });
-        axios
-          .get(`${that.databaseUrl}/guayusa/${that.userID}.json`)
-          .then((res: any) => {
-            that.prevVote.guayusa = res.data;
-          });
+        that.prevVote[that.selected.type] = that.selected;
         that.selected = {};
         _window().alert('Gracias por ayudarnos con tu valiosa respuesta. 🙏️');
       }
