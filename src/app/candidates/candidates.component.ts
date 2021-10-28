@@ -55,7 +55,7 @@ function _window(): any {
 })
 export class CandidatesComponent implements OnInit {
   candidates = CANDIDATES;
-  databaseUrl = 'https://reinadetena-default-rtdb.firebaseio.com/';
+  databaseUrl = 'https://reinadetena-default-rtdb.firebaseio.com';
   selected: any = {};
   userID: any;
   prevVote: any = {};
