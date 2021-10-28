@@ -58,6 +58,7 @@ export class CandidatesComponent implements OnInit {
   databaseUrl = 'https://tenacandidates-default-rtdb.firebaseio.com';
   selected: any = {};
   userID: any;
+  prevVote: any;
   constructor() {}
 
   selectCandidate(type: string, selected: any) {
@@ -100,6 +101,12 @@ export class CandidatesComponent implements OnInit {
     _window().FB.getLoginStatus(async function (response: any) {
       if (response.authResponse.userID) {
         that.userID = response.authResponse.userID;
+        axios.get(`${that.databaseUrl}/reina.json`).then((res: any) => {
+          that.prevVote.reina = res.data;
+        });
+        axios.get(`${that.databaseUrl}/guayusa.json`).then((res: any) => {
+          that.prevVote.guayusa = res.data;
+        });
       }
     });
   }

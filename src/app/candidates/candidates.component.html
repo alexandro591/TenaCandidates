@@ -9,7 +9,7 @@
 
 <mat-card class="candidatesCard">
   <div class="groupTitle">
-    <span>Reina del Tena 👑️</span>
+    <span>Reina de Tena 👑️</span>
   </div>
   <div class="candidatesContainer">
     <div *ngFor="let candidate of candidates.reina">
@@ -24,7 +24,20 @@
           <span>
             {{ candidate.name }}
           </span>
-          <button mat-stroked-button color="accent">Votar ❤️</button>
+          <button
+            mat-raised-button
+            color="accent"
+            *ngIf="prevVote?.reina?.id == candidate.id"
+          >
+            Mi voto 😎️
+          </button>
+          <button
+            mat-stroked-button
+            color="accent"
+            *ngIf="prevVote?.guayusa?.id != candidate.id"
+          >
+            Votar ❤️
+          </button>
         </div>
       </div>
     </div>
@@ -48,7 +61,20 @@
           <span>
             {{ candidate.name }}
           </span>
-          <button mat-stroked-button color="accent">Votar ❤️</button>
+          <button
+            mat-raised-button
+            color="accent"
+            *ngIf="prevVote?.guayusa?.id == candidate.id"
+          >
+            Mi voto ❤️
+          </button>
+          <button
+            mat-stroked-button
+            color="accent"
+            *ngIf="prevVote?.guayusa?.id != candidate.id"
+          >
+            Votar ❤️
+          </button>
         </div>
       </div>
     </div>
