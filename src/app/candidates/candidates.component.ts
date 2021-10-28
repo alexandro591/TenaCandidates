@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import axios from 'axios';
 
 const CANDIDATES = {
   guayusa: [
@@ -42,23 +43,35 @@ const CANDIDATES = {
   ],
 };
 
+function _window(): any {
+  // return the global native browser window object
+  return window;
+}
+
 @Component({
   selector: 'app-candidates',
   templateUrl: './candidates.component.html',
   styleUrls: ['./candidates.component.scss'],
 })
 export class CandidatesComponent implements OnInit {
-  window: any = window;
   candidates = CANDIDATES;
+  databaseUrl = 'https://tenacandidates-default-rtdb.firebaseio.com';
   selected: any = {};
   constructor() {}
 
-  selectCandidate(selected: any): any {
-    this.window.FB.getLoginStatus(function (response: any) {
-      console.log(response);
-    });
+  selectCandidate(type: string, selected: any) {
+    selected.type = type;
     this.selected = selected;
-    console.log(this.selected);
+  }
+
+  async vote() {
+    const that = this;
+    _window().FB.login();
+    await _window().FB.getLoginStatus(function (response: any) {
+      axios.patch(`that.databaseUrl/${that.selected.type}.json`, {
+        [response.authResponse.userID]: that.selected,
+      });
+    });
   }
 
   close() {

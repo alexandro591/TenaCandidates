@@ -1,6 +1,8 @@
 <div class="voteModal" *ngIf="selected.name">
   <span> Vota por {{ selected.name }} </span>
-  <button mat-raised-button color="primary">Votar con Facebook</button>
+  <button mat-raised-button color="primary" (click)="vote()">
+    Votar con Facebook
+  </button>
   <button mat-raised-button color="warn" (click)="close()">Cancelar</button>
 </div>
 
@@ -14,7 +16,10 @@
         <div class="candidatePicture">
           <img src="/assets/candidates/{{ candidate.picture }}.jpeg" alt="" />
         </div>
-        <div class="candidateButton" (click)="selectCandidate(candidate)">
+        <div
+          class="candidateButton"
+          (click)="selectCandidate('reina', candidate)"
+        >
           <span>
             {{ candidate.name }}
           </span>
@@ -35,7 +40,10 @@
         <div class="candidatePicture">
           <img src="/assets/candidates/{{ candidate.picture }}.jpeg" alt="" />
         </div>
-        <div class="candidateButton" (click)="selectCandidate(candidate)">
+        <div
+          class="candidateButton"
+          (click)="selectCandidate('guayusa', candidate)"
+        >
           <span>
             {{ candidate.name }}
           </span>
