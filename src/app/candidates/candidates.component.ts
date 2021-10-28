@@ -75,6 +75,16 @@ export class CandidatesComponent implements OnInit {
           await _window().FB.getLoginStatus(async function (response: any) {
             if (response.authResponse.userID) {
               that.userID = response.authResponse.userID;
+              axios
+                .get(`${that.databaseUrl}/reina/${that.userID}.json`)
+                .then((res: any) => {
+                  that.prevVote.reina = res.data;
+                });
+              axios
+                .get(`${that.databaseUrl}/guayusa/${that.userID}.json`)
+                .then((res: any) => {
+                  that.prevVote.guayusa = res.data;
+                });
               _window().clearInterval(interval);
             }
           });
