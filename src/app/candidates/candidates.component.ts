@@ -10,7 +10,7 @@ const CANDIDATES = {
     },
     {
       id: 2,
-      name: 'Shaquira Marienela Tanguila Andi',
+      name: 'Shaquira Marielena Tanguila Andi',
       picture: 'guayusa2',
     },
     {
