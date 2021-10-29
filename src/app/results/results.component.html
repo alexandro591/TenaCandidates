@@ -1,0 +1,21 @@
+<div class="results">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="password" />
+  </mat-form-field>
+  <button mat-stroked-button color="primary" (click)="checkPassword()">
+    Ver resultados
+  </button>
+  <div class="resultsContainer" *ngIf="passwordCheckPassed">
+    <mat-card>
+      <div *ngFor="let candidate of candidates.reina">
+        <span>{{ candidate.name }} / {{ candidate.votes }}</span>
+      </div>
+    </mat-card>
+    <mat-card>
+      <div *ngFor="let candidate of candidates.guayusa">
+        <span>{{ candidate.name }} / {{ candidate.votes }}</span>
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -94,9 +94,9 @@ export class CandidatesComponent implements OnInit {
     try {
       if (that.userID && that.selected) {
         await axios.patch(`${that.databaseUrl}/${that.selected.type}.json`, {
-          [that.userID]: that.selected,
+          [that.userID]: { id: that.selected.id },
         });
-        that.prevVote[that.selected.type] = that.selected;
+        that.prevVote[that.selected.type] = { id: that.selected.id };
         that.selected = {};
         _window().alert('Gracias por ayudarnos con tu valiosa respuesta. 🙏️');
       }
